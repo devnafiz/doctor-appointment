@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ApplicationController;
+use App\Http\Controllers\Backend\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,10 @@ Route::get('/', function () {
 //Route::get('{view}',applicationController::class)->where('view','(.*)');
 
 
-Route::get('{view}',ApplicationController::class)->where('view','(.*)');
+//Route::get('{view}',ApplicationController::class)->where('view','(.*)');
+
+
+
+//Admin Panel
+
+Route::get('/categories',[CategoryController::class,'index']);

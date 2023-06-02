@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('doctor_departments', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 160);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

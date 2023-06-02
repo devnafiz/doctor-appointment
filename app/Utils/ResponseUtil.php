@@ -32,8 +32,8 @@ class ResponseUtil
    public  static function makeError($message,array $data=[]):array
    {
 
-   	$res [
-         'success' => false,
+   	$res= [
+          'success' => false,
             'message' => $message,
 
    	];

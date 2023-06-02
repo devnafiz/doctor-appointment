@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
+            $table->string('bill_id');
+            $table->unsignedInteger('patient_id');
+            $table->datetime('bill_date');
+            $table->double('amount', 8, 2)->nullable();
             $table->timestamps();
         });
     }

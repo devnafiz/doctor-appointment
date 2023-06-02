@@ -15,6 +15,16 @@ return new class extends Migration
     {
         Schema::create('medicines', function (Blueprint $table) {
             $table->id();
+            $table->integer('category_id')->unsigned()->nullable();
+            $table->integer('brand_id')->unsigned()->nullable();
+            $table->string('name');
+            $table->double('selling_price');
+            $table->double('buying_price');
+            $table->string('salt_composition');
+            $table->text('description')->nullable();
+            $table->text('side_effects')->nullable();
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('brand_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

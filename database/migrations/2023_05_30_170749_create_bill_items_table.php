@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('bill_items', function (Blueprint $table) {
             $table->id();
+            $table->string('item_name');
+            $table->unsignedInteger('bill_id');
+            $table->integer('qty')->unsigned();
+            $table->double('price', 8, 2);
+            $table->double('amount', 8, 2);
+            $table->foreignId('bill_id')->constrained()->onDelete('cascade');
+
             $table->timestamps();
         });
     }
