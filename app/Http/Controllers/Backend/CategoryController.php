@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\CategoryRepository;
 use App\Models\Category;
+use App\Request\CategoryCreateRequest;
 
 class CategoryController extends AppBaseController
 {
@@ -53,7 +54,7 @@ class CategoryController extends AppBaseController
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -62,9 +63,9 @@ class CategoryController extends AppBaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryCreateRequest $request)
     {
-        //
+       dd($request->all());
     }
 
     /**
