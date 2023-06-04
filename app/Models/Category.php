@@ -30,9 +30,9 @@ class Category extends Model
         'name' => 'string',
         'is_active' => 'integer',    ];
 
-     protected $roles=[
+     public static $rules=[
      
-       'name'=>'required|min:8|string'
+       'name'=>'required|min:8',
      ];  
 
        public function prepareDocument(): array

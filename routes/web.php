@@ -35,3 +35,4 @@ Route::get('/', function () {
 //Admin Panel
 
 Route::get('/categories',[CategoryController::class,'index']);
+Route::post('api/category/store',[CategoryController::class,'store']);

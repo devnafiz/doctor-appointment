@@ -22,7 +22,7 @@ class CategoryCreateRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public  function rules()
     {
         return Category::$rules;
     }

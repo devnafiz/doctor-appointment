@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\CategoryRepository;
 use App\Models\Category;
-use App\Request\CategoryCreateRequest;
+use App\Http\Requests\CategoryCreateRequest;
 
 class CategoryController extends AppBaseController
 {
@@ -65,7 +65,13 @@ class CategoryController extends AppBaseController
      */
     public function store(CategoryCreateRequest $request)
     {
-       dd($request->all());
+       $input = $request->all();
+       $input['is_active']=!isset($input['is_active']) ? false : true; 
+       $this->CategoryRepository->create($input);
+        return $this->sendSuccess(__('messages.medicine.medicine_category').' '.__('messages.common.saved_successfully'));
+
+
+
     }
 
     /**
