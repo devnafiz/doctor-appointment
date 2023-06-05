@@ -28,11 +28,13 @@ Route::get('/', function () {
 //Route::get('{view}',applicationController::class)->where('view','(.*)');
 
 
-//Route::get('{view}',ApplicationController::class)->where('view','(.*)');
+
 
 
 
 //Admin Panel
 
-Route::get('/categories',[CategoryController::class,'index']);
+Route::get('/api/categories',[CategoryController::class,'index']);
 Route::post('api/category/store',[CategoryController::class,'store']);
+
+Route::get('{view}',ApplicationController::class)->where('view','(.*)');

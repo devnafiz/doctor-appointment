@@ -43,8 +43,8 @@ class CategoryController extends AppBaseController
       
 
        
-        //return $data;
-         return $this->sendResponse($data, 'Bills Retrieved Successfully');
+        return $data;
+        // return $this->sendResponse($data, 'Bills Retrieved Successfully');
     }
 
     /**
