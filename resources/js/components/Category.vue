@@ -5,7 +5,14 @@ import  axios from 'axios'
 
 import {ref, onMounted, reactive } from 'vue'
 
+
+const formValues = ref();
+const form = ref(null);
+
 const categories =ref([]);
+const editing =ref(false);
+
+
 
 
 const getCategory=()=>{
@@ -14,6 +21,12 @@ const getCategory=()=>{
      console.log(response.data);
 	 categories.value = response.data;
    })
+
+}
+
+const editCategory=(category)=>{
+	
+     $('#categoryFormModal').modal('show'); 
 
 }
 
@@ -56,13 +69,49 @@ onMounted(()=>{
 				<td>{{ category.name }}</td>
                 <td>
 
-					<a ><i class="fas fa-edit"></i></a>
+					<a @click.prevent="editCategory(category)"><i class="fas fa-edit"></i></a>
 					<a ><i class="fas fa-trash"></i></a>
 				</td>
 			</tr>
 	   </tbody>
     </table>
 </div>
+
+<div class="modal fade" id="categoryFormModal" data-backdrop="static" tabindex="1" role="dialog"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                        <span v-if="editing" >Edit User</span>
+                        <span  v-else>Add New User</span>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <Form  ref="form"  @submit="handleSubmit"  :initial-values="formValues">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <Field  name="name" type="text" class="form-control"
+                                id="name"  placeholder="Enter full name" :class="{'is_invalid': errors.name}" />
+                            <span class="invalid-feedback">{{errors.name}}</span>
+                        </div>
+
+                        
+
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary"  >Save</button>
+                    </div>
+                </Form>
+            </div>
+        </div>
+    </div>
+
 
 
 
